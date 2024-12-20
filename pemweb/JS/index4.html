@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biaya parkir</title>
+  </head>
+  <body>
+    <!-- jam masuk -->
+    <label for="jam_masuk">jam masuk</label>
+    <input type="number" name="jam_masuk" id="jam_masuk" />
+    <br /><br />
+    <!-- jam keluar -->
+    <label for="jam_keluar">jam keluar</label>
+    <input type="number" name="jam_keluar" id="jam_keluar" />
+    <br /><br />
+    <!-- hitung -->
+    <button onclick="hitung()">hitung</button>
+    <!-- heasil -->
+    <p>biaya parkir : <span id="hasil"></span></p>
+    <script src="parkir.js"></script>
+  </body>
+</html>

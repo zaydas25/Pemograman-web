@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konversi Mata Uang</title>
+  </head>
+  <body>
+    <h1>Konversi Mata Uang dollar</h1>
+    <label for="rupiah">Masukan Jumlah Rupiah :</label>
+    <input type="number" id="rupiah" onkeyup="rupiahkedollar()" />
+
+    <p>Hasil konversi ke dollar :<span id="hsldollar"></span></p>
+
+    <h1>Konversi mata uang ke rupiah</h1>
+    <label for="dollar">Masukan Jumlah Dollar :</label>
+    <input type="number" id="dollar" onkeyup="dollarkerupiah()" />
+
+    <p>Hasil konversi ke rupiah :<span id="hslrupiah"></span></p>
+
+    <script>
+      function rupiahkedollar() {
+        let rupiah = document.getElementById("rupiah").value;
+        let hsldollar = rupiah / 14650;
+        document.getElementById("hsldollar").innerHTML = hsldollar.toFixed(2);
+      }
+      function dollarkerupiah() {
+        let dollar = document.getElementById("dollar").value;
+        let hslrupiah = dollar * 14650;
+        document.getElementById("hslrupiah").innerHTML = hslrupiah;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validasi</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Pemesanan Tiket</h1>
+    <form id="ticketForm">
+        <div>
+            <label for="name">Nama Pelanggan:</label>
+            <input type="text" id="name" name="name">
+            <span class="error" id="nameError"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <span class="error" id="emailError"></span>
+        </div>
+        <div>
+            <label for="departureTime">Jam Keberangkatan:</label>
+            <input type="text" id="departureTime" name="departureTime" placeholder="HH.MM">
+            <span class="error" id="timeError"></span>
+        </div>
+        <div>
+            <label for="destination">Tujuan Keberangkatan:</label>
+            <input type="text" id="destination" name="destination">
+            <span class="error" id="destinationError"></span>
+        </div>
+        <div>
+            <label for="ticketCount">Jumlah Tiket:</label>
+            <input type="number" id="ticketCount" name="ticketCount">
+            <span class="error" id="ticketError"></span>
+        </div>
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(e => e.textContent = '');
+            document.querySelectorAll('input').forEach(e => e.classList.remove('invalid'));
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const time = document.getElementById('departureTime').value;
+            const destination = document.getElementById('destination').value;
+            const ticketCount = document.getElementById('ticketCount').value;
+
+            let isValid = true;
+
+            // Validate name
+            if (!name || name.length > 30) {
+                isValid = false;
+                document.getElementById('nameError').textContent = 'Nama harus diisi dan maksimal 30 karakter.';
+                document.getElementById('name').classList.add('invalid');
+            }
+
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailPattern.test(email)) {
+                isValid = false;
+                document.getElementById('emailError').textContent = 'Email tidak valid.';
+                document.getElementById('email').classList.add('invalid');
+            }
+
+            // Validate time
+            const timePattern = /^([01]?\d|2[0-3])\.[0-5]\d$/;
+            if (!time || !timePattern.test(time)) {
+                isValid = false;
+                document.getElementById('timeError').textContent = 'Jam harus dalam format HH.MM antara 00.00 - 23.59.';
+                document.getElementById('departureTime').classList.add('invalid');
+            }
+
+            // Validate destination
+            if (!destination) {
+                isValid = false;
+                document.getElementById('destinationError').textContent = 'Tujuan harus diisi.';
+                document.getElementById('destination').classList.add('invalid');
+            }
+
+            // Validate ticket count
+            if (!ticketCount || ticketCount < 1 || ticketCount > 10) {
+                isValid = false;
+                document.getElementById('ticketError').textContent = 'Jumlah tiket harus antara 1 - 10.';
+                document.getElementById('ticketCount').classList.add('invalid');
+            }
+
+            if (isValid) {
+                // Pass data to result.html
+                const params = new URLSearchParams({
+                    name, email, time, destination, ticketCount
+                }).toString();
+                window.location.href = `result.html?${params}`;
+            }
+        }
+    </script>
+</body>
+</html>

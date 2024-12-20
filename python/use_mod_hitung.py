@@ -1,0 +1,21 @@
+print("Gunakan modul secara langsung")
+import mod_hitung
+mod_hitung.tambah(3,5)
+mod_hitung.kali(3,2)
+mod_hitung.bagi(4,2)
+mod_hitung.kurang(3,1)
+mod_hitung.pangkat(2,2)
+print("Gunakan modul sebagai fungsi")
+from mod_hitung import tambah,kali,bagi,kurang,pangkat
+kali(3,2)
+kurang(3,1)
+pangkat(2,2)
+tambah(3,5)
+bagi(4,2)
+print("Gunakan modul dengan alias")
+from mod_hitung import tambah as t,kali as k,bagi as b,kurang as ku,pangkat as p
+k(3,2)
+ku(3,1)
+p(2,2)
+t(3,5)
+b(4,2)

@@ -1,0 +1,1 @@
+from latihanmodul1 import * 

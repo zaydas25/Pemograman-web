@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login 2</title>
+    <script>
+        let mhs = {
+            nama : "Zaid",
+            umur : "12",
+            prodi : {
+                kode : "TI",
+                nama : "Teknik Informatika"
+                ipk : "3.9"
+                grade : function(){
+                    if (mhs.ipk >= 3.75){
+                        return "Cumlaude";
+                    }
+                    else
+                        return "Tidak Lulus"
+                }
+            }
+
+            function cetak(){
+                let area_nf = document.getElementById("nf");
+                area_nf.innerHTML = "Nama Mahasiswa : " + mhs.nama;
+                area_nf.innerHTML = area_nf.innerHTML + "<br>Umur Mahasiswa : " + mhs.umur;
+                area_nf.innerHTML = area_nf.innerHTML + "<br>Kode Prodi : " + mhs.prodi.kode;
+                area_nf.innerHTML = area_nf.innerHTML + "<br>Nama Prodi : " + mhs.prodi.nama;
+                area_nf.innerHTML = area_nf.innerHTML + "<br>IPK Mahasiswa : " + mhs.prodi.ipk;
+                area_nf.innerHTML = area_nf.innerHTML + "<br>Grade Mahasiswa : " + mhs.prodi.grade();
+            }
+        }
+    </script>
+</head>
+<body onload="cetak()">
+    <div id="nf"></div>
+    
+</body>
+</html>
